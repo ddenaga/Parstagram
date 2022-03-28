@@ -1,4 +1,4 @@
-package com.github.ddenaga.parstagram
+package com.github.ddenaga.parstagram.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.github.ddenaga.parstagram.R
 import com.parse.ParseUser
 
 private const val TAG = "LoginActivity"
