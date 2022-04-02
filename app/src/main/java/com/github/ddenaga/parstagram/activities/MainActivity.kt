@@ -22,6 +22,7 @@ import androidx.fragment.app.FragmentManager
 import com.github.ddenaga.parstagram.R
 import com.github.ddenaga.parstagram.fragments.ComposeFragment
 import com.github.ddenaga.parstagram.fragments.FeedFragment
+import com.github.ddenaga.parstagram.fragments.ProfileFragment
 import com.github.ddenaga.parstagram.models.Post
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
@@ -53,8 +54,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.action_profile -> {
-                    // TODO: Navigate to the profile screen
-                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    fragmentToShow = ProfileFragment()
                 }
 
             }
