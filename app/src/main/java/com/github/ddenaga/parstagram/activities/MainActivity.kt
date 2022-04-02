@@ -69,33 +69,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         bottomNavigation.selectedItemId = R.id.action_home
-        // queryPosts()
-    }
-
-
-    // Query for all posts in our server
-    fun queryPosts() {
-        // Specify which class to query
-        val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
-        // Find all Post objects
-        query.include(Post.KEY_USER)
-        query.findInBackground(object: FindCallback<Post> {
-            override fun done(posts: MutableList<Post>?, e: ParseException?) {
-                if (e != null) {
-                    // Something has went wrong
-                    Log.e(TAG, "Error in fetching posts: $e")
-                    e.printStackTrace()
-                }
-                else {
-                    if (posts != null) {
-                        // Print out all the posts
-                        for (post in posts) {
-                            Log.i(TAG, "Post from ${post.getUser()?.username}: ${post.getDescription()}")
-                        }
-                    }
-                }
-            }
-        })
     }
 
 }
