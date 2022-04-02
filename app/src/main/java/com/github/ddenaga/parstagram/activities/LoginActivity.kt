@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Switch to the MainActivity if there's a user logged in
         if (ParseUser.getCurrentUser() != null) {
-            // goToMainActivity()
+            goToMainActivity()
         }
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
