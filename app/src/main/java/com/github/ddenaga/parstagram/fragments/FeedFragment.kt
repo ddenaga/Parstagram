@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.github.ddenaga.parstagram.R
 import com.github.ddenaga.parstagram.adapters.PostAdapter
 import com.github.ddenaga.parstagram.models.Post
@@ -16,11 +17,13 @@ import com.parse.ParseException
 import com.parse.ParseQuery
 
 private const val TAG = "FeedFragment"
-class FeedFragment : Fragment() {
+open class FeedFragment : Fragment() {
 
     lateinit var rvPosts: RecyclerView
     lateinit var adapter: PostAdapter
-    private var listOfPosts: MutableList<Post> = mutableListOf()
+    var listOfPosts: MutableList<Post> = mutableListOf()
+
+    lateinit var swipeContainer: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +46,26 @@ class FeedFragment : Fragment() {
         // 5. Set layout manager on RecyclerView
         rvPosts.layoutManager = LinearLayoutManager(requireContext())
         queryPosts()
+
+
+        // Lookup the swipe container view
+        swipeContainer = view.findViewById(R.id.swipeContainer)
+
+        swipeContainer.setOnRefreshListener {
+            listOfPosts.clear()
+            queryPosts()
+        }
+
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+            android.R.color.holo_green_light,
+            android.R.color.holo_orange_light,
+            android.R.color.holo_red_light);
+
     }
 
     // Query for all posts in our server
-    fun queryPosts() {
+    open fun queryPosts() {
         // Specify which class to query
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
         // Find all Post objects
@@ -74,6 +93,7 @@ class FeedFragment : Fragment() {
 
                         listOfPosts.addAll(posts)
                         adapter.notifyDataSetChanged()
+                        swipeContainer.isRefreshing = false
                     }
                 }
             }
