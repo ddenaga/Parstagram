@@ -13,7 +13,7 @@ The following **required** functionality is completed:
 - [x] User can pull to refresh the last 20 posts submitted to "Instagram".
 
 The following **optional** features are implemented:
-
+<details>
 - [ ] User sees app icon in home screen and styled bottom navigation view
 - [ ] Style the feed to look like the real Instagram feed.
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
@@ -25,7 +25,7 @@ The following **optional** features are implemented:
 - [ ] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts 
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [ ] User can like a post and see number of likes for each post in the post details screen.
-
+</details>
 The following **additional** features are implemented:
 
 ## Video Walkthrough
@@ -59,7 +59,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='demo1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='demo1.gif' title='Video Walkthrough' height='700' alt='Video Walkthrough' />
 </details>
     
 ## Notes
